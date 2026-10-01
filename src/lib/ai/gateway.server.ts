@@ -23,7 +23,7 @@ Ground everything in the provided input; if it's only a topic, state reasoning a
 export type Mode = keyof typeof SYSTEM_PROMPTS;
 
 export function runAi(request: Request, mode: Mode, messages: ModelMessage[]) {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) throw new Error("AI is not configured.");
   const runIdFetch = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
   const provider = createOpenAI({
